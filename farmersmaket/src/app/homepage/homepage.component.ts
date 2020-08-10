@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, Validators, FormBuilder,FormControl,} from '@angular/forms'
-import {AuthenticationService} from '../authentication.service'
 import { Observable } from "rxjs";
 
 @Component({
@@ -12,7 +11,7 @@ export class HomepageComponent implements OnInit {
   signinForm: FormGroup;
   error:string = null;
 
-  constructor(private formBuilder:FormBuilder, private authenticationService: AuthenticationService) {
+  constructor(private formBuilder:FormBuilder) {
     this.signinForm = formBuilder.group({
       email:["", [Validators.required,Validators.email]],
       password: ["", Validators.required],
