@@ -5,7 +5,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { HeaderCustomerComponent } from './header-customer/header-customer.component';
 import { RouterModule } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { RouterModule } from '@angular/router';
       {path:'orders',component:OrderHistoryComponent},
       {path:'shoppingcart',component:ShoppingCartComponent},
 
-    ])
+    ]),
+    ReactiveFormsModule
   ]
 })
 export class CustomerModule { }
