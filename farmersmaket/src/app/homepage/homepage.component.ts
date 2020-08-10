@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit {
     this.signinForm = formBuilder.group({
       email:["", [Validators.required,Validators.email]],
       password: ["", Validators.required],
-      type: ["", Validators]
+      type: [""]
     });
     console.log("signup page loaded")
    }
