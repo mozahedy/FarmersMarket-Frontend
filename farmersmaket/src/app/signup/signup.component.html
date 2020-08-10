@@ -1,0 +1,284 @@
+<!--====== HEADER PART START ======-->
+
+<header class="header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/images/logo.png" alt="Logo" class="logo-size">
+                    </a> <!-- Logo -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="bar-icon"></span>
+                        <span class="bar-icon"></span>
+                        <span class="bar-icon"></span>
+                    </button>
+  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul id="nav" class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class ="welcome" data-scroll-nav="0" routerLink="home/signup">Welcome to Farmers Market</a>
+                            </li>                            
+                        </ul> <!-- navbar nav -->
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+  </header>
+  
+  <!--====== HEADER PART ENDS ======-->
+
+
+<!--====== CONTACT PART START ======-->
+<section id="contact" class="contact-area pt-115">
+  <div class="container">    
+    <div class="row justify-content-center mt-70">
+      <div class="col-lg-12">
+        <div class="contact-title text-center">
+          <h2 class="title">SIGN UP</h2>
+        </div>
+        <!-- contact title -->
+      </div>
+    </div>
+    <!-- row -->
+    <div class="contact-box">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="contact-form">
+            <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+              <div class="row">
+                <label for="adress" class="col-lg-12 col-form-label-lg"
+                  >Personal Information</label
+                >
+                <div class="col-lg-4">
+                  <div class="single-form form-group">
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="Enter Your First Name"
+                      required="required"
+                      [formControl]="signupForm.get('firstName')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('firstName').valid"
+                    >
+                      Please provide a First Name*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-4">
+                  <div class="single-form form-group">
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Enter Your Last Name"
+                      required="required"
+                      [formControl]="signupForm.get('lastName')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('lastName').valid"
+                    >
+                      Please provide a Last Name*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-4">
+                  <div class="single-form form-group">
+                    <input
+                      type="text"
+                      name="phone"
+                      placeholder="(301) 111-2222"
+                      required="required"
+                      [formControl]="signupForm.get('phone')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('phone').valid"
+                    >
+                    Please provide a Phone number* 
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter Your Email"
+                      required="required"
+                      [formControl]="signupForm.get('email')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('email').valid"
+                    >
+                      Please provide a proper Email*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form form-group">
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Enter Your New Password"
+                      required="required"
+                      [formControl]="signupForm.get('password')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('password').valid"
+                    >
+                      Please provide a password*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-12">
+                  <div class="single-form form-group">
+                    <select
+                      class="form-control form-control-md"
+                      id="exampleFormControlSelect1"
+                      required="required"
+                      name="type"
+                      [formControl]="signupForm.get('type')"
+                    >
+                      <option disabled selected>Select User Type</option>
+                      <option>farmers</option>
+                      <option>customers</option>
+                    </select>
+                    <div
+                      class="help-block with-errors text-danger"
+                      *ngIf="!signupForm.get('type').valid"
+                    >
+                      Please Choose either a Farmer or a Customer*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <label for="adress" class="col-lg-12 col-form-label-lg"
+                  >Address</label
+                >
+                <div class="col-lg-6">
+                  <div class="single-form form-group">
+                    <input
+                      type="text"
+                      name="street"
+                      placeholder="Enter Your Street"
+                      data-error="Street is required."
+                      required="required"
+                      [formControl]="signupForm.get('street')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('street').valid"
+                    >
+                      Please provide a Street*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form form-group">
+                    <input
+                      type="text"
+                      name="city"
+                      placeholder="Enter Your City"
+                      required="required"
+                      [formControl]="signupForm.get('city')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('city').valid"
+                    >
+                      Please provide a City*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form form-group">
+                    <input
+                      type="text"
+                      name="state"
+                      placeholder="Enter Your State"
+                      required="required"
+                      style="text-transform: uppercase;"
+                      on
+                      keyup="javascript:this.value=this.value.toUpperCase();"
+                      maxlength="2"
+                      [formControl]="signupForm.get('state')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('state').valid"
+                    >
+                      Please provide a State*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form form-group">
+                    <input
+                      type="text"
+                      name="zip"
+                      placeholder="ZIP"
+                      required="required"
+                      [formControl]="signupForm.get('zip')"
+                    />
+                    <div
+                      div
+                      class="text-danger"
+                      *ngIf="!signupForm.get('zip').valid"
+                    >
+                      Please provide ZIP*
+                    </div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <p class="form-message"></p>
+                <div class="col-lg-12">
+                  <div class="single-form form-group button">
+                    <div div class="text-danger" *ngIf="!signupForm.valid">
+                        Please Fill in all Required Fields*
+                      </div>
+                      <br>
+                    <button
+                      class="main-btn"
+                      type="submit"
+                      [disabled]="!signupForm.valid"
+                    >
+                      SIGN UP
+                    </button>                    
+                  </div>
+                  <!-- single form -->
+                </div>
+              </div>
+              <!-- row -->
+            </form>
+          </div>
+          <!-- row -->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- contact box -->
+  </div>
+  <!-- container -->
+</section>
