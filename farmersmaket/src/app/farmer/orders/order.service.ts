@@ -10,10 +10,18 @@ import {catchError, retry} from 'rxjs/operators';
 
 
 export class OrderService {
-  orderListUrl='http://localhost:3000/api/orders/pending/farmers/1456/'
+  orderListUrl='http://localhost:3000/api/orders/pending/farmers/1'
+
+  updateApi='http://localhost:3000/api/orders/'
   constructor(private http: HttpClient) { }
 
   getOrders() :any {
       return this.http.get<any>(this.orderListUrl);
+  }
+
+  readyOrder(orderId,data) {
+    console.log(data.customerEmail);
+     return this.http.patch<any>(this.updateApi+orderId,data);
+    
   }
 }
