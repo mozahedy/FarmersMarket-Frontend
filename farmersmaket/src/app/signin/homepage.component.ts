@@ -39,10 +39,10 @@ export class HomepageComponent implements OnInit {
     };
     const typeOfAccount = this.signinForm.value.type;
     this.authenticationService.signIn(account, typeOfAccount);
-    // setTimeout(()=>{
-    //   console.log(this.authenticationService.getUserAccount());
-    //   console.log(this.authenticationService.getToken());
-    // },1000);
+    setTimeout(()=>{
+      console.log()
+      // this.router.navigate();
+    },1000);
   }
 
   typeValidator(control: FormControl): { [s: string]: boolean } {

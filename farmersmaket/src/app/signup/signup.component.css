@@ -6,3 +6,9 @@
 .button {
   text-align: center;
 }
+.navbar-nav .nav-item a{
+  font-size: 25px;
+  text-decoration: none;
+  font-family: cursive;
+
+}
