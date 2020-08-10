@@ -13,7 +13,6 @@ import {HomepageComponent} from './homepage/homepage.component';
 import {AuthenticationInterceptor} from './authentication.interceptor';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
