@@ -9,8 +9,10 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {HomepageComponent} from './homepage/homepage.component';
-// import {AuthenticationInterceptor} from './authentication.interceptor';
+import {HomepageComponent} from './signin/homepage.component';
+import {AuthenticationInterceptor} from './authentication.interceptor';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import {HomepageComponent} from './homepage/homepage.component';
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
+    SignupComponent,
         
   ],
   imports: [
@@ -26,23 +29,25 @@ import {HomepageComponent} from './homepage/homepage.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      {path:'', redirectTo:'home',pathMatch:'full'},
-      {path:'home', component:HomepageComponent},
+    RouterModule.forRoot([           
+      {path:'home/signin', component:HomepageComponent},
+      {path:'home/signup', component:SignupComponent},
+
       {
-        path: 'customer',
+        path: 'customers',
         loadChildren: () =>
           import('./customer/customer.module').then(
             (m) => m.CustomerModule
           ),
       },
       {
-        path: 'farmer',
+        path: 'farmers',
         loadChildren: () =>
           import('./farmer/farmer.module').then(
             (m) => m.FarmerModule
           ),
       },
+      {path:'', redirectTo:'home/signin',pathMatch:'full'}
     ])
 
   ],
