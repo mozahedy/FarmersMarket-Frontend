@@ -18,7 +18,7 @@ export class OrderService {
   getOrders() :any {
       return this.http.get<any>(this.orderListUrl);
   }
-
+ //update ready orders 
   readyOrder(orderId,data) {
     console.log(data.customerEmail);
      return this.http.patch<any>(this.updateApi+orderId,data);
