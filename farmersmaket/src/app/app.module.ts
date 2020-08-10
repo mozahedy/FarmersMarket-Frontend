@@ -9,8 +9,10 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {HomepageComponent} from './homepage/homepage.component';
+import {HomepageComponent} from './signin/homepage.component';
 import {AuthenticationInterceptor} from './authentication.interceptor';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 
@@ -20,6 +22,7 @@ import {AuthenticationInterceptor} from './authentication.interceptor';
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
+    SignupComponent,
         
   ],
   imports: [
@@ -27,9 +30,10 @@ import {AuthenticationInterceptor} from './authentication.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      {path:'', redirectTo:'home',pathMatch:'full'},
+    RouterModule.forRoot([           
       {path:'home', component:HomepageComponent},
+      {path:'home/signup', component:SignupComponent},
+
       {
         path: 'customer',
         loadChildren: () =>
@@ -44,6 +48,7 @@ import {AuthenticationInterceptor} from './authentication.interceptor';
             (m) => m.FarmerModule
           ),
       },
+      {path:'', redirectTo:'home',pathMatch:'full'}
     ])
 
   ],
