@@ -16,23 +16,18 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="contact-form">
-            <form
-              id="contact-form"
-              action="assets/contact.php"
-              method="post"
-              data-toggle="validator"
-            >
+            <form [formGroup] = "signinForm" (ngSubmit) = "onSubmit()">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="single-form form-group">
                     <input
+                      class="form-control"
                       type="text"
-                      name="name"
-                      placeholder="Enter Your Email"
-                      data-error="Email is required."
-                      required="required"
+                      name="email"
+                      placeholder="Enter Your Email"                      
+                      required="required"  formControlName = "email"
                     />
-                    <div class="help-block with-errors"></div>
+                    <div class="invalid-feedback" *ngIf = "signinForm.get('email').hasError('invalid')">Please provide a proper Email</div>
                   </div>
                   <!-- single form -->
                 </div>
@@ -40,13 +35,13 @@
                 <div class="col-lg-12">
                   <div class="single-form form-group">
                     <input
+                      class="form-control"
                       type="text"
-                      name="name"
-                      placeholder="Enter Your Password"
-                      data-error="Password is required."
-                      required="required"
+                      name="password"
+                      placeholder="Enter Your Password"                      
+                      required="required" [formControl] = "signinForm.get('password')"
                     />
-                    <div class="help-block with-errors"></div>
+                    <div class="invalid-feedback" *ngIf = "signinForm.get('email').hasError('invalid')">Please provide a password</div>
                   </div>
                   <!-- single form -->
                 </div>
@@ -56,10 +51,11 @@
                       class="form-control form-control-md"
                       id="exampleFormControlSelect1"
                       required="required"
+                      name="type"
                     >
                       <option disabled selected>Select User Type</option>
-                      <option>farmer</option>
-                      <option>customer</option>
+                      <option>farmers</option>
+                      <option>customers</option>
                     </select>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -68,7 +64,7 @@
                 <p class="form-message"></p>
                 <div class="col-lg-12">
                   <div class="single-form form-group">
-                    <button class="main-btn" type="submit">SIGN IN</button>
+                    <button class="main-btn" type="submit" [disabled]= "!signinForm.valid">SIGN IN</button>
                   </div>
                   <!-- single form -->
                 </div>
