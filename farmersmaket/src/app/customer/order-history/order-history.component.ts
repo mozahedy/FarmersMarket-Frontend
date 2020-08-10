@@ -10,9 +10,9 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class OrderHistoryComponent implements OnInit {
 
-  orders: any;
+  orders: any[] = [];
   subscription: Subscription;
-  custEmail: string = 'cust12345@gmail.com';
+  custEmail: string = 'cust123@gmail.com';
   lowerDate: string = "2019-12-15";
   upperDate: string = "2020-09-28";
   status: string = 'pending';
@@ -26,6 +26,26 @@ export class OrderHistoryComponent implements OnInit {
     //   }
     // );
   }
+
+  checkOrders() : boolean{
+  
+     if(this.orders.length > 0) 
+      return true;
+    else 
+      return false; 
+  }
+
+  //this will submit request for orders. code snippet 
+  // submitForm() {
+  //   var formData: any = new FormData();
+  //   formData.append("name", this.form.get('name').value);
+  //   formData.append("avatar", this.form.get('avatar').value);
+
+  //   this.http.post('http://localhost:4000/api/create-user', formData).subscribe(
+  //     (response) => console.log(response),
+  //     (error) => console.log(error)
+  //   )
+  // }
 
   ngOnInit(): void {
 
