@@ -1,5 +1,7 @@
-
-.nav-item{
-    padding:2px;
-    margin-left: 7px;
+nav{
+    display: inline-block;
+    text-align: center;
+}
+span{
+    font-size: 30px;
 }
