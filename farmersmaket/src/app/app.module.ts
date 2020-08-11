@@ -32,7 +32,7 @@ import { UsersGuard } from './users.guard';
       { path: 'home/signup', component: SignupComponent },
       {
         path: 'customers',
-        // canActivate: [UsersGuard],
+        canActivate: [UsersGuard],
         loadChildren: () =>
           import('./customer/customer.module').then((m) => m.CustomerModule),
       },
