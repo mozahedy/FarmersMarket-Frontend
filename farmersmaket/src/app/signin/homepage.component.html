@@ -1,0 +1,119 @@
+<!--====== HEADER PART START ======-->
+
+<header class="header-area">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                  <a class="navbar-brand" href="index.html">
+                      <img src="assets/images/logo.png" alt="Logo" class="logo-size">
+                  </a> <!-- Logo -->
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="bar-icon"></span>
+                      <span class="bar-icon"></span>
+                      <span class="bar-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul id="nav" class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                          <a class ="welcome" data-scroll-nav="0" routerLink="home/signup">Welcome to Farmers Market</a>
+                      </li>                            
+                  </ul> <!-- navbar nav -->
+                  </div>
+              </nav> <!-- navbar -->
+          </div>
+      </div> <!-- row -->
+  </div> <!-- container -->
+</header>
+
+<!--====== HEADER PART ENDS ======-->
+
+
+<!--====== CONTACT PART START ======-->
+<section id="contact" class="contact-area pt-115">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="contact-title text-center">
+          <h2 class="title">SIGN IN</h2>
+        </div>
+        <!-- contact title -->
+      </div>
+    </div>
+    <!-- row -->
+
+    <div class="contact-box" id="signinbox">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="contact-form">
+            <form [formGroup] = "signinForm" (ngSubmit) = "onSubmit()">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="single-form form-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="email"
+                      placeholder="Enter Your Email"                      
+                      required="required"  formControlName = "email"
+                    />
+                    <div class="text-danger" *ngIf = "!signinForm.get('email').valid">Please provide a proper Email</div>
+                  </div>
+                  <!-- single form -->
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="single-form form-group">
+                    <input
+                      class="form-control"
+                      type="password"
+                      name="password"
+                      placeholder="Enter Your Password"                      
+                      required="required" [formControl] = "signinForm.get('password')"
+                    />
+                    <div *ngIf = "!signinForm.get('password').valid" class="text-danger">Please provide a password</div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <div class="col-lg-12">
+                  <div class="single-form form-group">
+                    <select
+                      class="form-control form-control-md"
+                      id="exampleFormControlSelect1"
+                      required="required"
+                      name="type"
+                      [formControl] = "signinForm.get('type')"
+                    >
+                      <option disabled selected>Select User Type</option>
+                      <option>farmers</option>
+                      <option>customers</option>
+                    </select>
+                    <div class="help-block with-errors text-danger" *ngIf = "!signinForm.get('type').valid">Please Choose either a Farmer or a Customer</div>
+                  </div>
+                  <!-- single form -->
+                </div>
+                <p class="form-message"></p>
+                <div class="col-lg-12">
+                  <div class="single-form form-group button">
+                    <button class="main-btn" type="submit" [disabled]= "!signinForm.valid">SIGN IN</button>                    
+                  </div>
+                  <div class="single-form form-group button">                   
+                    <a class="main-btn"  id ="signup" [routerLink] = "['customers','farmers']" >SIGN UP</a>
+                  </div>
+                  <!-- single form -->
+                </div>
+              </div>
+              <!-- row -->
+            </form>
+          </div>
+          <!-- row -->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+
+
+  </div>
+  <!-- container -->
+</section>
