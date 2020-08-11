@@ -26,8 +26,7 @@ import { UsersGuard } from './users.guard';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo: 'home/signin', pathMatch: 'full' },
+    RouterModule.forRoot([      
       { path: 'home/signin', component: HomepageComponent },
       { path: 'home/signup', component: SignupComponent },
       {
