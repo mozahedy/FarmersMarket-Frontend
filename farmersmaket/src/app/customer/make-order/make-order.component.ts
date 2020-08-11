@@ -10,8 +10,11 @@ import { Router } from '@angular/router';
 export class MakeOrderComponent implements OnInit {
   private cartItems: any;
   private customer : any;
+  private farmer: any;
 
-  constructor(private farmerService: GetFarmersService, private router: Router) { }
+  constructor(private farmerService: GetFarmersService, private router: Router) { 
+    
+  }
 
   ngOnInit(): void {
   }
