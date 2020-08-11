@@ -6,11 +6,12 @@ import { config } from '../../config/config';
   providedIn: 'root'
 })
 export class AddProductService {
-  addProductUrl = config.RestUrl + '/farmers/5f2f3159d5f2e432f096956b/addproduct';
+  addProductUrl: any;
   uploadImageUrl = config.RestUrl + '/upload';
   constructor(private http: HttpClient) { }
 
-  addProduct(product): any {
+  addProduct(product, farmerId): any {
+    this.addProductUrl = config.RestUrl + '/farmers/' + farmerId + '/product';
     return this.http.post<any>(this.addProductUrl, product);
   }
 

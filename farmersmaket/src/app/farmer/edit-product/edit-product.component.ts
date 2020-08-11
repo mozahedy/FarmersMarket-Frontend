@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { FarmerProductService } from '../home/farmer-product.service';
-
+import { AuthenticationService } from '../../authentication.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -14,6 +14,7 @@ import { FarmerProductService } from '../home/farmer-product.service';
 })
 export class EditProductComponent implements OnInit {
   img: File;
+  farmerId: any;
   fd = new FormData();
   products: any;
   singleProduct: any;
@@ -26,12 +27,14 @@ export class EditProductComponent implements OnInit {
     private editProductService: EditProductService,
     private farmerProductService: FarmerProductService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService
   ) {
 
   }
 
   ngOnInit(): void {
+    this.farmerId = this.farmerId = this.authenticationService.getUserAccount()._id;
     const id: Observable<string> = this.route.params.pipe(map(p => p.id));
     id.subscribe( id => {
       this.products = this.farmerProductService.getProducts();
@@ -54,10 +57,10 @@ export class EditProductComponent implements OnInit {
 
    // Function for handling form when it is submited
    onSubmit(): void {
-    this.result = this.editProductService.editProduct(this.editForm.value)
+    this.result = this.editProductService.editProduct(this.editForm.value, this.farmerId)
                   .subscribe(res => {
                     if ( res.status === 'ok' ){
-                      this.router.navigateByUrl('/farmer');
+                      this.router.navigateByUrl('/farmers');
                     } else{
                       alert('Error in editing product. Please try again.');
                     }
@@ -65,10 +68,10 @@ export class EditProductComponent implements OnInit {
   }
 
   removeProduct(): void {
-    this.result = this.editProductService.removeProduct(this.singleProduct)
+    this.result = this.editProductService.removeProduct(this.singleProduct, this.farmerId)
                   .subscribe(res => {
                     if ( res.status === 'ok' ){
-                      this.router.navigateByUrl('/farmer');
+                      this.router.navigateByUrl('/farmers');
                     } else{
                       alert('Error in removing product. Please try again.');
                     }
