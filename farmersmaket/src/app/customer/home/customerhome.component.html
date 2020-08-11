@@ -1,101 +1,118 @@
+<app-header-customer></app-header-customer>
+<section id="contact" class="contact-area pt-200">
+  <div class="container">
+    <!-- row -->
 
-  <app-header-customer></app-header-customer>
-  <section id="contact" class="contact-area pt-200">
-    <div class="container">
-      <!-- row -->
-  
-  
-  
+
+
   </div>
   <!-- container -->
-  </section>
-  
-  <section id="contact" class="contact-area pt-25 ">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="contact-title text-center">
-            <h2 class="info-title" *ngIf="">Message</h2>
-            <ng-template #no_orders><h2 class="info-content">No Farmers</h2></ng-template>
-            <h2 class="info-content" >Available Farmers</h2>
-          </div> <!-- contact title -->
-        </div>
-      </div> <!-- row -->
-  
-      <div class="contact-box mt-70" >
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="contact-info pt-25">
-              <h4 class="info-title">Farmer Name</h4>
-              <h6 class="info-content">Order.id</h6>
-              <ul>
-                <li>
-                  <div class="single-info mt-30">
-                    <div class="info-title">
-                      Order Date:
-                    </div><br />
-                    <div class="info-content">
-                      <p>my orders</p>
-                    </div>
-                  </div> <!-- single info -->
-                </li>
-                <li>
-                  <div class="single-info mt-30">
-                    <div class="info-title">
-                      Farmer Id:
-                    </div><br />
-                    <div class="info-content">
-                      <p>this is farmer id</p>
-                    </div>
-                  </div> <!-- single info -->
-                </li>
-                <li>
-                  <div class="single-info mt-30">
-                    <div class="info-title">
-                      Total Price:
-                    </div><br />
-                    <div class="info-content">
-                      <p>this is total price</p>
-                    </div>
-                  </div> <!-- single info -->
-                </li>
-              </ul>
-            </div> <!-- contact info -->
-          </div>
-          <div class="col-lg-8">
-            <div class="contact-form">
-              <div class="single-slider">
-                <div class="slider-bg">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Unit</th>
-                        <th scope="col">Unit Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr >
-                        <th scope="row">row</th>
-                        <td>product name</td>
-                        <td>product unit</td>
-                        <td>product unitprice</td>
-                        <td>product quantity</td>
-                      </tr>
-        
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-  
-            </div> <!-- row -->
-          </div>
-        </div> <!-- row -->
+</section>
+
+<section id="contact" class="contact-area pt-25 ">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="contact-title text-center">
+          <h2 class="info-title" *ngIf="">Message</h2>
+          <ng-template #no_orders>
+            <h2 class="info-content">No Farmers</h2>
+          </ng-template>
+          <h2 class="info-content">List of Farmers</h2>
+        </div> <!-- contact title -->
       </div>
-  
-  
-  
+    </div> <!-- row -->
+
+    <div class="contact-box mt-70" *ngFor="let farmer of farmersList">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="contact-info pt-25">
+            <h4 class="info-title">Farmer</h4>
+            <h6 class="info-content">{{farmer.name.lastname}}, {{farmer.name.firstname}}</h6>
+            <ul>
+              <li>
+                <div class="single-info mt-30" style="margin-top:0">
+                  <div class="info-title">
+                    Email:
+                  </div>
+                  <div class="info-content">
+                    <p>{{farmer.email}}</p>
+                  </div>
+                </div> <!-- single info -->
+              </li>
+              <li>
+                <div class="single-info mt-30" style="margin-top:0">
+                  <div class="info-title">
+                    Phone Number:
+                  </div>
+                  <div class="info-content">
+                    <p>{{farmer.phone}}</p>
+                  </div>
+                </div> <!-- single info -->
+              </li>
+              <li>
+                <div class="single-info mt-30" style="margin-top:0">
+                  <div class="info-title">
+                    Address:
+                  </div>
+                  <div class="info-content"  style="margin-top:0">
+                    <p  style="margin-top:0;margin-bottom:0">street address</p>
+                    <p  style="margin-top:0;margin-bottom:0">city, state</p>
+                    <p  style="margin-top:0;margin-bottom:0">zip_code</p>
+                  </div>
+                </div> <!-- single info -->
+              </li>
+            </ul>
+          </div> <!-- contact info -->
+        </div>
+        <div class="col-lg-8">
+          <div class="contact-form">
+            <div class="single-slider">
+              <h4 class="info-title">Available Products</h4>
+              <div class="slider-bg">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Product Name</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Unit</th>
+                      <th scope="col">Unit Price</th>
+                      <th scope="col">Image</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of farmer.provided_products; let i = index">
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{product.name}}</td>
+                      <td>{{product.category}}</td>
+                      <td>{{product.unit}}</td>
+                      <td>{{product.unit_price}}</td>
+                      <td><img src = "{{product.image}}" /></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> <!-- row -->
+        </div>
+        
+        </div> <!-- row -->
+
+        <div class="contact-form">
+          
+            <div class="col-lg-12">
+              <div class="single-form form-group" style="margin-top:0">
+                  <button #linkBtn class="main-btn" (click) ="selectFarmer(farmer._id)">SELECT</button>
+              </div>
+              <!-- single form -->
+          </div>
+
+        </div>
+      </div>
+
+
+
     </div> <!-- container -->
-  </section>
+</section>

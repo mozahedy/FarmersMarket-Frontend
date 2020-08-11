@@ -16,7 +16,7 @@ export class OrdersDataService {
       "dateLower": fromDate,
       "dateUpper": toDate
     }
-    console.log(status)
+    
     return this.http.post(config.RestUrl + `/orders/${status}/customers/${custEmail}`, body)
 
 
