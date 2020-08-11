@@ -38,7 +38,7 @@ import { UsersGuard } from './users.guard';
       },
       {
         path: 'farmers',
-        canActivate: [UsersGuard],
+        // canActivate: [UsersGuard],
         loadChildren: () =>
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
