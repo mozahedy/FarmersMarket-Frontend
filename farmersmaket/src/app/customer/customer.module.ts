@@ -7,10 +7,11 @@ import { HeaderCustomerComponent } from './header-customer/header-customer.compo
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
+import { MakeOrderComponent } from './make-order/make-order.component';
 
 
 @NgModule({
-  declarations: [CustomerHomeComponent, OrderHistoryComponent, ShoppingCartComponent, HeaderCustomerComponent],
+  declarations: [CustomerHomeComponent, OrderHistoryComponent, ShoppingCartComponent, HeaderCustomerComponent, MakeOrderComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from "@angular/forms";
       {path:'farmers',component:CustomerHomeComponent},
       {path:'orders',component:OrderHistoryComponent},
       {path:'shoppingcart',component:ShoppingCartComponent},
+      {path:'farmers/:id',component:MakeOrderComponent},
 
     ]),
     ReactiveFormsModule,
