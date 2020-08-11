@@ -9,6 +9,8 @@ import {
   FormBuilder,
   FormArray
 } from "@angular/forms";
+import {AuthenticationService} from '../../authentication.service'
+
 
 @Component({
   selector: 'app-order-history',
@@ -28,15 +30,9 @@ export class OrderHistoryComponent implements OnInit {
 
   ordersQueryForm: FormGroup;
 
-  constructor(private ordersDataService: OrdersDataService, private activatedRoute: ActivatedRoute,private formBuilder: FormBuilder) {
-    // this.subscription = activatedRoute.params.subscribe(
-    //   (params: any) => {
-    //     this.lowerDate = params['lowerDate'];
-    //     this.upperDate = params['upperDate'];
-    //     this.status = params['status'];
-    //   }
-    // );
-
+  constructor(private ordersDataService: OrdersDataService, private activatedRoute: ActivatedRoute,private formBuilder: FormBuilder, private auth: AuthenticationService ) {
+    //uncomment this full integration is complete
+    // this.custEmail = auth.getUserAccount().email;
     this.ordersQueryForm = formBuilder.group({
       'status': ['all'],
       'fromDate': [],
