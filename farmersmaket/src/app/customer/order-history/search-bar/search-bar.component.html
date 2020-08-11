@@ -1,0 +1,54 @@
+<div class="contact-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="contact-form">
+
+                <form [formGroup]="ordersQueryForm" (ngSubmit)="onSearch()">
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="single-form form-group">
+                                <select class="form-control form-control-md" id="statusSelect"
+                                    required="required" name="status" [formControl]="ordersQueryForm.get('status')">
+                                    <option selected>All Status</option>
+                                    <option>pending</option>
+                                    <option>ready</option>
+                                    <option>completed</option>
+                                </select>
+                                <div class="help-block with-errors text-danger" *ngIf="!ordersQueryForm.get('type').valid">
+                                    Please Choose either a Farmer or a Customer</div>
+                            </div>
+                            <!-- single form -->
+                        </div>
+                        <label for="adress" class="col-lg-12 col-form-label-lg">Address</label>
+                        <div class="col-lg-6">
+                            <div class="single-form form-group">
+                                <input type="date" name="fromDate" [formControl]="ordersQueryForm.get('fromDate')" />
+                            </div>
+                            <!-- single form -->
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-form form-group">
+                                <input type="date" name="fromDate" [formControl]="ordersQueryForm.get('fromDate')" />
+                            </div>
+                            <!-- single form -->
+                        </div>
+                        
+                        <p class="form-message"></p>
+                        <div class="col-lg-12">
+                            <div class="single-form form-group">
+                                <button class="main-btn" type="submit">SEARCH</button>
+                            </div>
+                            <!-- single form -->
+                        </div>
+                    </div>
+                    <!-- row -->
+                </form>
+            </div>
+            <!-- row -->
+        </div>
+    </div>
+    <!-- row -->
+</div>
+<!-- contact box -->
