@@ -27,6 +27,7 @@ export class OrderHistoryComponent implements OnInit {
   fromDate: string;
   status: string;
   initial: boolean = true;
+  fetchOrders$: any;
 
   ordersQueryForm: FormGroup;
 
@@ -61,9 +62,9 @@ export class OrderHistoryComponent implements OnInit {
     this.toDate = this.ordersQueryForm.value.toDate;
     this.fromDate = this.ordersQueryForm.value.fromDate;
     this.status = this.ordersQueryForm.value.status
-    const fetchOrders$ = this.ordersDataService.getOrderHistory(this.status, this.custEmail, this.fromDate, this.toDate)
+    this.fetchOrders$ = this.ordersDataService.getOrderHistory(this.status, this.custEmail, this.fromDate, this.toDate)
         
-        fetchOrders$
+        this.fetchOrders$
         .subscribe((res: any) => {
           
           
@@ -94,7 +95,7 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnDestroy() {
- 
+    
   }
 
 }
