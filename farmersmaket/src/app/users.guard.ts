@@ -20,7 +20,10 @@ export class UsersGuard implements CanActivate {
         this.router.navigate(['home']);
         return false;
       }
+
     return true;
+
+
   }
   
 }

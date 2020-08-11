@@ -2,20 +2,27 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { config } from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FarmerProductService {
-  productUrl = 'http://localhost:3000/api/farmers/5f2f3159d5f2e432f096956b/fetch';
+  baseUrl = config.RestUrl;
+  productUrl: any;
+  products: any;
   constructor(private http: HttpClient) { }
 
-/*   getProducts(): any {
-    return this.getProductRest;
-  } */
-
   /** GET products from the express server */
-  getProducts(): any {
+  fetchProducts(farmerId): any {
+    this.productUrl = this.baseUrl + '/farmers/' + farmerId + '/fetch';
     return this.http.get<any>(this.productUrl);
+  }
+  setProducts(products): void {
+    this.products = products;
+  }
+
+  getProducts(): any {
+    return this.products;
   }
 }

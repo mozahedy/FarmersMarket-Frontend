@@ -1,0 +1,131 @@
+<app-farmer-header></app-farmer-header>
+
+<section id="contact" class="contact-area pt-115">
+    <div class="container">
+      <!-- row -->
+
+      <div class="row justify-content-center mt-70">
+        <div class="col-lg-12">
+          <div class="contact-title text-center">
+            <h2 class="title">Edit Product</h2>
+          </div>
+          <!-- contact title -->
+        </div>
+      </div>
+      <!-- row -->
+      <div class="contact-box">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="contact-form">
+              <form
+              [formGroup]="editForm" (ngSubmit)="onSubmit()"
+                data-toggle="validator"
+              >
+                <div class="row">
+                  <label for="adress" class="col-lg-12 col-form-label-lg">Product edit</label>
+                  <div class="col-lg-12">
+                    <div class="single-form form-group">
+                      <input type="hidden" formControlName="_id" />
+                      <input
+                        type="text"
+                        formControlName="name"
+                        placeholder="Product Name"
+                        data-error="Product Name is required."
+                        required="required"
+                        minlength="3"
+                        maxlength="50"
+                      />
+                      <div class="help-block with-errors text-danger" *ngIf="!editForm.get('name').valid && editForm.hasError('required', ['name'])">Name is required</div>
+                    </div>
+                    <!-- single form -->
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="single-form form-group">
+                        <select
+                        class="form-control"
+                        formControlName="category"
+                        required="required"
+                      >
+                        <option disabled selected>Select Category</option>
+                        <option>Vegetable</option>
+                        <option>Fruit</option>
+                        <option>Grain</option>
+                      </select>
+                      <div class="help-block with-errors text-danger" *ngIf="!editForm.get('category').valid && editForm.hasError('required', ['category'])">Category is required</div>
+                    </div>
+                    <!-- single form -->
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="single-form form-group">
+                      <input
+                        type="text"
+                        formControlName="unit"
+                        placeholder="Unit of measurement"
+                        data-error="Unit of measurement is required."
+                        required="required"
+                        minlength="1"
+                        maxlength="50"
+                      />
+                      <div class="help-block with-errors text-danger" *ngIf="!editForm.get('unit').valid && editForm.hasError('required', ['unit'])">Unit is required</div>
+                    </div>
+                    <!-- single form -->
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="single-form form-group">
+                      <input
+                        type="text"
+                        formControlName="unit_price"
+                        placeholder="Unit price"
+                        data-error="Unit price."
+                        required="required"
+                        min="1"
+                      />
+                      <div class="help-block with-errors text-danger" *ngIf="!editForm.get('unit_price').valid && editForm.hasError('required', ['unit_price'])">Unit price is required</div>
+                    </div>
+                    <!-- single form -->
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="single-form form-group">
+                      <input
+                        type="number"
+                        formControlName="inventory"
+                        placeholder="Number of product in inventory"
+                        data-error="Inventory is required."
+                        required="required"
+                        min="1"
+                      />
+                      <div class="help-block with-errors text-danger" *ngIf="!editForm.get('inventory').valid && editForm.hasError('required', ['inventory'])">Inventory is required</div>
+                    </div>
+                    <!-- single form -->
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="single-form form-group">
+                        <div class="single-form form-group">
+                          <img src="{{image}}" />
+                      </div>
+                      </div>
+                      <!-- single form -->
+                    </div>
+
+                  <p class="form-message"></p>
+                  <div class="col-lg-12">
+                    <div class="single-form form-group">
+                      <button class="main-btn" type="submit" [disabled]="!editForm.valid">Save</button>
+                      <button class="main-btn ml-5" (click)="removeProduct()" >Remove</button>
+                    </div>
+                    <!-- single form -->
+                  </div>
+                </div>
+                <!-- row -->
+              </form>
+            </div>
+            <!-- row -->
+          </div>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- contact box -->
+    </div>
+    <!-- container -->
+  </section>
+  
