@@ -22,7 +22,7 @@ export class AuthenticationService {
         this.baseUrl + '/'+ typeOfAccount + '/signin',
         account
       )
-      .subscribe((response) => {        
+      .subscribe((response) => {          
         this.token = response.token;
         this.responseMessage = response.message;
         this.userAccount = response.account;

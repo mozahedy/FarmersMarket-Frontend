@@ -18,11 +18,13 @@ import {
 export class OrderHistoryComponent implements OnInit {
 
   orders: any[] = [];
-
+  message = '';
+  noOrderMsg ='Specify Search Criteria';
   custEmail: string = 'cust123@gmail.com';
   toDate: string;
   fromDate: string;
   status: string;
+  initial: boolean = true;
 
   ordersQueryForm: FormGroup;
 
@@ -36,9 +38,9 @@ export class OrderHistoryComponent implements OnInit {
     // );
 
     this.ordersQueryForm = formBuilder.group({
-      'status': [''],
-      'fromDate': [''],
-      'toDate': [''],
+      'status': ['all'],
+      'fromDate': [],
+      'toDate': [],
     });
 
   }
@@ -47,14 +49,19 @@ export class OrderHistoryComponent implements OnInit {
   
      if(this.orders.length > 0) 
       return true;
-    else 
-      return false; 
+    else {
+      if(!this.initial)
+      this.noOrderMsg ='No Orders Available'
+      return false;
+    }
+       
   }
 
 
 
   onSearch(){
-
+    
+    this.initial=false;
     this.toDate = this.ordersQueryForm.value.toDate;
     this.fromDate = this.ordersQueryForm.value.fromDate;
     this.status = this.ordersQueryForm.value.status
@@ -68,6 +75,7 @@ export class OrderHistoryComponent implements OnInit {
           for(let order of this.orders){
             order.order_date = new Date(order.order_date).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
           }
+          this.message = `${this.status} order history`
         })
   }
 
