@@ -41,7 +41,8 @@ export class HomepageComponent implements OnInit {
     this.authenticationService.signIn(account, typeOfAccount);
     setTimeout(()=>{
       console.log()
-      // this.router.navigate();
+      console.log(this.authenticationService.getUserAccount());      
+      this.router.navigate([typeOfAccount]);
     },1000);
   }
 

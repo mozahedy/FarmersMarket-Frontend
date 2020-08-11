@@ -9,13 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 
 
-
 @NgModule({
   declarations: [CustomerHomeComponent, OrderHistoryComponent, ShoppingCartComponent, HeaderCustomerComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:'',component:CustomerHomeComponent},
+      {path:'',redirectTo:'farmers', pathMatch:'full'},
+      {path:'farmers',component:CustomerHomeComponent},
       {path:'orders',component:OrderHistoryComponent},
       {path:'shoppingcart',component:ShoppingCartComponent},
 

@@ -20,7 +20,7 @@ export class HomepageComponent implements OnInit {
     console.log("signup page loaded")
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
   onSubmit(){
