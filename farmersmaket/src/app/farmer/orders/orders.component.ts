@@ -49,6 +49,7 @@ export class OrdersComponent implements OnInit {
 //update for ready for pick up
       submitUpdateReady(orderId,email){
         let order_status = "ready";
+        var currDate=new Date();
        let pickup_date = "2020-07-15";
        console.log(email);
 
