@@ -1,15 +1,79 @@
 <app-header-customer></app-header-customer>
 
+<section id="contact" class="contact-area pt-200">
+  <div class="container">
+    <!-- row -->
 
+<div class="contact-box">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="contact-form">
 
-<section id="contact" class="contact-area pt-115 mt-100">
+              <form [formGroup]="ordersQueryForm" (ngSubmit)="onSearch()">
+
+                  <div class="row">
+
+                      <div class="col-lg-4">
+                        <label for="statusSelect" class="col-lg-4 col-form-label-lg">Status</label>
+                          <div class="">
+                              <select class="form-control form-control-md" id="statusSelect"
+                                  required="required" name="status" style="height: 56px;" formControlName="status">
+                                  <option selected>All Status</option>
+                                  <option>pending</option>
+                                  <option>ready</option>
+                                  <option>completed</option>
+                              </select>
+                          </div>
+                          
+                          <!-- single form -->
+                      </div>
+                      
+                      <div class="col-lg-4">
+                        <label for="fromDate" class="col-lg-4 col-form-label-lg">From</label>
+                          <div class="single-form form-group" style="margin-top:0">
+                              <input id="fromDate" type="date" name="fromDate" formControlName="fromDate" />
+                          </div>
+                          <!-- single form -->
+                      </div>
+                      
+                      <div class="col-lg-4">
+                        <label for="toDate" class="col-lg-4 col-form-label-lg">To:</label>
+                          <div class="single-form form-group" style="margin-top:0">
+                              <input id="toDate" type="date" name="toDate"  formControlName="toDate"/>
+                          </div>
+                          <!-- single form -->
+                      </div>
+                      
+                      <p class="form-message"></p>
+                      <div class="col-lg-12">
+                          <div class="single-form form-group" style="margin-top:0">
+                              <button class="main-btn" type="submit">SEARCH</button>
+                          </div>
+                          <!-- single form -->
+                      </div>
+                  </div>
+                  <!-- row -->
+              </form>
+          </div>
+          <!-- row -->
+      </div>
+  </div>
+  <!-- row -->
+</div>
+<!-- SEARCH BOX -->
+
+</div>
+<!-- container -->
+</section>
+
+<section id="contact" class="contact-area pt-25 ">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
         <div class="contact-title text-center">
-          <h2 class="title" *ngIf="checkOrders() else no_orders">{{orders[0].status}} order history</h2>
-          <ng-template #no_orders><h2 class="title">No Orders Available</h2></ng-template>
-          <h2 class="info-title">from {{lowerDate}} to {{upperDate}} </h2>
+          <h2 class="info-title" *ngIf="checkOrders() else no_orders">{{status}} order history</h2>
+          <ng-template #no_orders><h2 class="info-content">No Orders Available</h2></ng-template>
+          <h2 class="info-content" *ngIf="checkOrders()">from {{toDate}} to {{fromDate}} </h2>
         </div> <!-- contact title -->
       </div>
     </div> <!-- row -->

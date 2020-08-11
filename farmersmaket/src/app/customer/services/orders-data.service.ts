@@ -11,10 +11,10 @@ export class OrdersDataService {
 
   }
 
-  getOrderHistory(status: string, custEmail: string, lowerDate: string, upperDate: string) {
+  getOrderHistory(status: string, custEmail: string, fromDate: string, toDate: string) {
     const body: any = {
-      "dateLower": lowerDate,
-      "dateUpper": upperDate
+      "dateLower": fromDate,
+      "dateUpper": toDate
     }
     console.log(custEmail)
     return this.http.post(config.RestUrl + `/orders/${status}/customers/${custEmail}`, body)
@@ -22,7 +22,7 @@ export class OrdersDataService {
 
   }
 
-
+  
   
 
 }
