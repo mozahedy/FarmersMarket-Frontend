@@ -14,9 +14,9 @@
     
                           <div class="col-lg-12">
 
-                            <input type="radio" formControlName="status"value="pending"(change)="onSearch()"checked />Pending
-                            <input type="radio"formControlName="status"value="ready"(change)="onSearch()"/>Ready
-                            <input type="radio"formControlName="status"value="completed"(change)="onSearch()"/> Complete
+                            <input type="radio" ng-model="myVar" ng-init="myVar =false" formControlName="status" value="pending"(change)="onSearch()"checked />Pending
+                            <input type="radio" ng-model="myVar1" ng-init="myVar1 = false" formControlName="status" value="ready"(change)="onSearch()"/>Ready
+                            <input type="radio" ng-model="myVar2" ng-init="myVar2 = false" formControlName="status" value="completed"(change)="onSearch()"/> Complete
                               
                               
                               <!-- single form -->
@@ -89,8 +89,9 @@
             </ul><hr>
             <div class="col-lg-12">          
               
-                <button class="btn btn-warning"  type="submit" (click)="submitUpdateReady(order._id,order.customer_email)">Ready&E-mail</button>
-                <button class="btn btn-success"  type="submit" (click)="submitUpdateCompleted(order._id)">Complete</button>
+                <button class="btn btn-warning" id="btn" ng-if="myVar" type="submit" (click)="submitUpdateReady(order._id,order.customer_email)" style="margin-right: 10px;
+                width: max-content;">Ready&E-mail</button>
+                <button class="btn btn-success" id="btn" ng-if="myVar1" type="submit" (click)="submitUpdateCompleted(order._id)">Complete</button>
                 
                 
               <!-- udate status form -->
