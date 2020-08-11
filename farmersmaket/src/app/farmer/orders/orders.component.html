@@ -2,7 +2,7 @@
 <app-farmer-header></app-farmer-header>
 
       <!--====== SLIDER PART START ======-->
-    
+   
       <section id="home" class="slider-area pt-200">
         <div class="container-fluid position-relative">
             <div class="slider-active">
@@ -19,9 +19,9 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
+                                  <tr *ngFor="let order of orderProducts">
                                     <th scope="row">1</th>
-                                    <td>Mark</td>
+                                    <td>{{order.status}}</td>
                                     <td>Otto</td>
                                     <td>@mdo</td>
                                   </tr>
