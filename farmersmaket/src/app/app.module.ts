@@ -27,7 +27,8 @@ import { UsersGuard } from './users.guard';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([      
-      { path: 'home/signin', component: HomepageComponent },
+      { path: '', redirectTo:'home', pathMatch:'full' },
+      { path: 'home', component: HomepageComponent },
       { path: 'home/signup', component: SignupComponent },
       {
         path: 'customers',
@@ -37,7 +38,7 @@ import { UsersGuard } from './users.guard';
       },
       {
         path: 'farmers',
-        canActivate: [UsersGuard],
+        // canActivate: [UsersGuard],
         loadChildren: () =>
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
