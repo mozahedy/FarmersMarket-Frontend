@@ -17,7 +17,7 @@ export class UsersGuard implements CanActivate {
       if(token){
         return true;
       } else{
-        this.router.navigate(['home/signin']);
+        this.router.navigate(['home']);
         return false;
       }
     
