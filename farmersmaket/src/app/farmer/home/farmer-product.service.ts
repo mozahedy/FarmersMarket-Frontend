@@ -9,12 +9,13 @@ import { config } from '../../config/config';
 })
 export class FarmerProductService {
   baseUrl = config.RestUrl;
-  productUrl = 'http://localhost:3000/api/farmers/5f2f3159d5f2e432f096956b/fetch';
+  productUrl: any;
   products: any;
   constructor(private http: HttpClient) { }
 
   /** GET products from the express server */
-  fetchProducts(): any {
+  fetchProducts(farmerId): any {
+    this.productUrl = this.baseUrl + '/farmers/' + farmerId + '/fetch';
     return this.http.get<any>(this.productUrl);
   }
   setProducts(products): void {

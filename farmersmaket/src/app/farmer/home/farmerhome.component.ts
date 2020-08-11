@@ -10,15 +10,14 @@ import { AuthenticationService } from '../../authentication.service';
 })
 export class FarmerHomeComponent implements OnInit {
   products: any;
-  farmer: any;
+  farmerId: any;
   constructor(
     private farmerProductService: FarmerProductService,
     private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.farmer = this.authenticationService.getUserAccount();
-    console.log(this.farmer);
-    this.farmerProductService.fetchProducts()
+    this.farmerId = this.authenticationService.getUserAccount()._id;
+    this.farmerProductService.fetchProducts(this.farmerId)
     .subscribe( p => {
       this.products = p.name;
       this.farmerProductService.setProducts(this.products);
