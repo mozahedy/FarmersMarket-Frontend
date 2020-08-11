@@ -23,19 +23,16 @@ export class OrderService {
   }
  //update ready orders 
   readyOrder(orderId,data) {
-    console.log(data.customerEmail);
      return this.http.patch<any>(this.updateApi+orderId,data);
     
   }
 
   completeOrder(orderId,data) {
-    console.log(data);
      return this.http.patch<any>(this.updateApi+orderId,data);
     
   }
  //get filtered ordered list
   getFilteredHistory(status: string) {
-    console.log(status)
     return this.http.get<any>(this.updateApi+status+'/farmers/'+this.farmer._id);
 
 

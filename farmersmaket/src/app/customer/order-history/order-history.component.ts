@@ -82,7 +82,6 @@ export class OrderHistoryComponent implements OnInit {
         
         // fetchOrders$
         // .subscribe((res: any) => {
-        //   console.log("inside subscribe",res);
           
         //   this.orders = res.data;
         //   for(let order of this.orders){

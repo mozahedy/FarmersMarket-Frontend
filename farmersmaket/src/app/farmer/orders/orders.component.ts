@@ -51,10 +51,8 @@ export class OrdersComponent implements OnInit {
         let order_status = "ready";
         var currDate=new Date();
        let pickup_date = "2020-07-15";
-       console.log(email);
 
       this.orderService.readyOrder(orderId, { status: order_status, pickupDateTime: pickup_date,customerEmail:email }).subscribe(res => {
-           console.log(res);
       })
     
       }
@@ -77,10 +75,8 @@ export class OrdersComponent implements OnInit {
       onSearch(){
        
         this.status = this.ordersQueryForm.value.status
-        console.log(this.status);
         const fetchOrders$ = this.orderService.getFilteredHistory(this.status).subscribe((res: any) => {  
               this.orders = res.data;
-              console.log(this.orders);
               this.message = `${this.status} order List`
               
             })

@@ -70,8 +70,6 @@ export class MakeOrderComponent implements OnInit {
       this.cartItems.push(item);
     } else {      
       for (let i = 0; i < this.cartItems.length; i++) {
-        console.log('cart item pr name',this.cartItems[i].product.name);
-        console.log('new product pr name',productFarmer.name);
         if (this.cartItems[i].product.name === productFarmer.name) {
           this.cartItems[i].quantity++;
 
@@ -84,8 +82,6 @@ export class MakeOrderComponent implements OnInit {
             },
             quantity: 1,
           };
-          // console.log('itme');
-          
           this.cartItems.push(item);
           break;
         }

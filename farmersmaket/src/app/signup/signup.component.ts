@@ -55,8 +55,7 @@ export class SignupComponent implements OnInit {
           state: this.signupForm.value.state,
           zip: parseInt(this.signupForm.value.zip)
         }
-      };
-      // console.log(typeOfAccount,account);  
+      }; 
       this.authenticationService.signUp(account, typeOfAccount);  
       setTimeout(() => {
         const acc = this.authenticationService.getUserAccount()

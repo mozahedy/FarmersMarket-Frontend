@@ -17,7 +17,6 @@ export class HomepageComponent implements OnInit {
       password: ["", Validators.required],
       type: [""]
     });
-    console.log("signup page loaded")
    }
 
   ngOnInit(): void { 
@@ -29,7 +28,6 @@ export class HomepageComponent implements OnInit {
       password: this.signinForm.value.password
     }
     const typeOfAccount = this.signinForm.value.type;
-    console.log(account,typeOfAccount);
   }
 
   asyncExampleValidator(control: FormControl): Promise<any> | Observable<any> {
