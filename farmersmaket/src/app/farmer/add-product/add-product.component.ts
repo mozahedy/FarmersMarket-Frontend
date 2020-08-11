@@ -42,7 +42,7 @@ export class AddProductComponent implements OnInit {
                       this.addProductService.addProduct(this.profileForm.value, this.authenticationService.getUserAccount()._id)
                         .subscribe(response => {
                           if ( res.status === 'ok' ){
-                            this.router.navigateByUrl('/farmer');
+                            this.router.navigateByUrl('/farmers');
                           } else {
                             alert('Error in adding product. Please try again.');
                           }
