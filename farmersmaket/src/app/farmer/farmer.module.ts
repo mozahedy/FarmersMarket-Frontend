@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
      {path : 'product/add' , component : AddProductComponent},
      {path : 'product/:id/edit' , component : EditProductComponent},
      {path : 'orders', component : OrdersComponent},
+    
    ])]
 })
 export class FarmerModule {}
