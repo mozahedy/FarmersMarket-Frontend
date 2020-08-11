@@ -17,13 +17,12 @@ export class AuthenticationService {
     return this.token;
   }
   signIn(account, typeOfAccount: string) {
-    console.log(this.baseUrl + '/'+typeOfAccount + '/signin');
     this.http
       .post<{  account: object, message: string ,token:string}>(
         this.baseUrl + '/'+ typeOfAccount + '/signin',
         account
       )
-      .subscribe((response) => {        
+      .subscribe((response) => {          
         this.token = response.token;
         this.responseMessage = response.message;
         this.userAccount = response.account;
@@ -35,7 +34,6 @@ export class AuthenticationService {
     this.http
       .post<{data: object}>( this.baseUrl + '/'+ typeOfAccount + '/signup',account)
       .subscribe((response) => {
-        console.log(response);
         this.userAccount = response.data;        
       });
     
