@@ -6,15 +6,17 @@ import { config } from '../../config/config';
   providedIn: 'root'
 })
 export class EditProductService {
-  editProductUrl = config.RestUrl + '/farmers/5f2f3159d5f2e432f096956b/update';
-  removeProductUrl = config.RestUrl + '/farmers/5f2f3159d5f2e432f096956b/delete';
+  editProductUrl: any;
+  removeProductUrl: any;
   constructor(private http: HttpClient) { }
 
-  editProduct(product): any {
+  editProduct(product, farmerId): any {
+    this.editProductUrl = config.RestUrl + '/farmers/' + farmerId + '/update';
     return this.http.patch<any>(this.editProductUrl, product);
   }
 
-  removeProduct(product): any {
+  removeProduct(product, farmerId): any {
+    this.removeProductUrl = config.RestUrl + '/farmers/' + farmerId + '/delete';
     return this.http.patch<any>(this.removeProductUrl, product);
   }
 }
