@@ -1,18 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FarmerProductService } from './farmer-product.service';
 import { Observable, throwError, of } from 'rxjs';
-
-import * as _ from 'lodash';
-
-interface Product {
-  _id: string;
-  name: string;
-  category: string;
-  unit: string;
-  unit_price: number;
-  inventory: number;
-  image: number;
-}
+import { AuthenticationService } from '../../authentication.service';
 
 @Component({
   selector: 'app-homme',
@@ -21,11 +10,18 @@ interface Product {
 })
 export class FarmerHomeComponent implements OnInit {
   products: any;
-  constructor(private farmerProductService: FarmerProductService) { }
+  farmerId: any;
+  constructor(
+    private farmerProductService: FarmerProductService,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-     this.farmerProductService.getProducts()
-     .subscribe( p => this.products = p.name);
+    this.farmerId = this.authenticationService.getUserAccount()._id;
+    this.farmerProductService.fetchProducts(this.farmerId)
+    .subscribe( p => {
+      this.products = p.name;
+      this.farmerProductService.setProducts(this.products);
+    });
   }
 
 }

@@ -40,7 +40,7 @@ export class HomepageComponent implements OnInit {
     const typeOfAccount = this.signinForm.value.type;
     this.authenticationService.signIn(account, typeOfAccount);
     setTimeout(()=>{   
-      this.router.navigate([typeOfAccount + '/farmers']);
+      this.router.navigate([typeOfAccount]);
     },1000);
   }
 
