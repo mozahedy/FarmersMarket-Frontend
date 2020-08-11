@@ -32,18 +32,17 @@ import { UsersGuard } from './users.guard';
       { path: 'home/signup', component: SignupComponent },
       {
         path: 'customers',
-        // canActivate: [UsersGuard],
+        canActivate: [UsersGuard],
         loadChildren: () =>
           import('./customer/customer.module').then((m) => m.CustomerModule),
       },
       {
         path: 'farmers',
-        // canActivate: [UsersGuard],
+        canActivate: [UsersGuard],
         loadChildren: () =>
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
       { path: '**', redirectTo: 'home', pathMatch: 'full' } //redirect to signin page
-      
     ]),
   ],
   providers: [
