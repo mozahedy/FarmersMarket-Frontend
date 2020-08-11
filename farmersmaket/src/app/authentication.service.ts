@@ -8,6 +8,7 @@ import { config } from './config/config';
 export class AuthenticationService {
   private token: string;
   private responseMessage: any;
+  private userAccount: any;
   baseUrl = config.RestUrl;
 
   constructor(private http: HttpClient) {}
@@ -16,23 +17,30 @@ export class AuthenticationService {
     return this.token;
   }
   signIn(account, typeOfAccount: string) {
+    console.log(this.baseUrl + '/'+typeOfAccount + '/signin');
     this.http
-      .post<{ token: string }>(this.baseUrl + '/'+ typeOfAccount, account)
-      .subscribe((response) => {
-        const token = response.token;
-        this.token = token;
-        this.responseMessage = response;
+      .post<{  account: object, message: string ,token:string}>(
+        this.baseUrl + '/'+ typeOfAccount + '/signin',
+        account
+      )
+      .subscribe((response) => {        
+        this.token = response.token;
+        this.responseMessage = response.message;
+        this.userAccount = response.account;
       });
-    return this.responseMessage;
+    
   }
 
   signUp(account, typeOfAccount: string) {
     this.http
-      .post(this.baseUrl + typeOfAccount, account)
+      .post<{data: object}>( this.baseUrl + '/'+ typeOfAccount + '/signup',account)
       .subscribe((response) => {
         console.log(response);
-        this.responseMessage = response;
+        this.userAccount = response.data;        
       });
-      return this.responseMessage;
+    
+  }
+  getUserAccount() {
+    return this.userAccount;
   }
 }
