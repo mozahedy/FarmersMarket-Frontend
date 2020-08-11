@@ -14,13 +14,13 @@ export class UsersGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const token = this.authenticationService.getToken();
-      if(token){
-        return true;
-      } else{
-        this.router.navigate(['home/signin']);
-        return false;
-      }
-    
+      // if(token){
+      //   return true;
+      // } else{
+      //   this.router.navigate(['home']);
+      //   return false;
+      // }
+    return true;
   }
   
 }

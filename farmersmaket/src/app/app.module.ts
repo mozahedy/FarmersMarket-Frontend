@@ -26,8 +26,9 @@ import { UsersGuard } from './users.guard';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([      
-      { path: 'home/signin', component: HomepageComponent },
+    RouterModule.forRoot([  
+      { path: '', redirectTo: 'home', pathMatch: 'full' },          
+      { path: 'home', component: HomepageComponent },      
       { path: 'home/signup', component: SignupComponent },
       {
         path: 'customers',        
@@ -39,6 +40,8 @@ import { UsersGuard } from './users.guard';
         loadChildren: () =>
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
+      // { path: '**', redirectTo: 'home', pathMatch: 'full' }
+      
     ]),
   ],
   providers: [
