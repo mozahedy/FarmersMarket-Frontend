@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersDataService } from '../services/orders-data.service'
+import {AuthenticationService} from '../../authentication.service'
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormArray
+} from "@angular/forms";
+import {MakeOrderService} from '../services/make-order.service'
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,9 +17,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  shoppingCart: any;
+  customer: any;
+  totalPrice:any;
+
+  checkoutForm: FormGroup;
+
+  constructor(private ordersDataService: OrdersDataService, private makeOrderService: MakeOrderService, private formBuilder: FormBuilder, private auth: AuthenticationService) { 
+
+    this.checkoutForm = formBuilder.group(
+      {
+        'fullname':[],
+        'email': [],
+        'street':[],
+        'city':[],
+        'state':[],
+        'zip':[],
+        'cardname':[],
+        'cardnumber':[],
+        'expmonth':[],
+        'expyear':[],
+        'cvv':[]
+      }
+    )
+  }
+
+  onSubmit(){
+    this.ordersDataService.createOrder(this.shoppingCart, this.customer.email)
+  }
 
   ngOnInit(): void {
+
+    this.shoppingCart = this.makeOrderService.getCurrentCart();
+    this.customer = this.auth.getUserAccount();
+    this.checkoutForm.value.fullname = this.customer.name.firstname + ' ' + this.customer.name.lastname;
+    this.checkoutForm.value.email = this.customer.email;
+    this.checkoutForm.value.street = this.customer.address.street;
+    this.checkoutForm.value.city = this.customer.address.city;
+    this.checkoutForm.value.state = this.customer.address.state;
+    this.checkoutForm.value.zip = this.customer.address.zip;
+
+    this.totalPrice = 0;
+    
+    for(let item of this.shoppingCart.items){
+
+      this.totalPrice = this.totalPrice + (item.product.unit_price * item.quantity);
+    }
   }
 
 }
