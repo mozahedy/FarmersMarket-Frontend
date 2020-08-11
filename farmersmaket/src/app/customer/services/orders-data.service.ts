@@ -22,6 +22,31 @@ export class OrdersDataService {
 
   }
 
+  createOrder(shoppingCart: any, custEmail: string){
+
+    let newOrder:{customer_email:string,
+      farmer_id:string,
+      total: number,
+      products: any[] 
+    };
+    
+    let items: any[] = shoppingCart.items;
+
+    newOrder.customer_email = custEmail;
+    newOrder.farmer_id = shoppingCart.farmerId;
+    newOrder.total = 0;
+    
+    for(let item of items){
+      let product: any;
+      product = item.product;
+      product.quantity = item.quantity;
+      newOrder.products.push(product)
+      newOrder.total = newOrder.total + (product.unit_price * product.quantity);
+    }
+
+    return this.http.post(config.RestUrl + `/orders/`, newOrder)
+
+  }
 
   
 
