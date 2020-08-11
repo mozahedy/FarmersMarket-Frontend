@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class GetFarmersService {
 
+
   farmersList: any;
   farmerId: any;
 
@@ -29,6 +30,7 @@ export class GetFarmersService {
     })
 
     return fetchFarmers$
+
   }
 }
 

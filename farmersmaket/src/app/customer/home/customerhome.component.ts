@@ -21,7 +21,7 @@ export class CustomerHomeComponent implements OnInit {
   selectFarmer(e){
 
     this. getFarmersService.putFarmerId(e);
-    this.router.navigate(['/customer/makeorder'])
+    this.router.navigate(['/customers/shopping/buy'])
   }
 
   ngOnInit(): void {

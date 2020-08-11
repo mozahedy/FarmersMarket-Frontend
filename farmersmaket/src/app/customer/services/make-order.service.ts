@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { GetFarmersService} from '../services/get-farmers.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,22 +8,20 @@ import { Injectable } from '@angular/core';
 export class MakeOrderService { 
   farmerId: string;
   currentCart: any;
-  upperCartLimitCount: number;
-  lowerCartLimitCount: number;
-  constructor() { }
-  /* {
-    "customer_email": "cust123@gmail.com",
-    "farmer_id": "123",
-    "total_price": 200, 
-     "products":[{
-             "product_name": "potato",
-             "unit":"kg",
-             "unit_price": 12,
-             "quantity": 15
-         }]
-  } */
+  constructor(private getFarmer:GetFarmersService, private router: Router) { }
 
   getCurrentCart(){
-    return this.currentCart;
+    this.farmerId = this.getFarmer.getFarmerId();
+    let shoppingCart = {
+      items:this.currentCart,
+      farmer_id: this.farmerId,
+    }
+    return shoppingCart;
   }
+  setCurrentCart(cart){
+    this.currentCart = cart;
+  
+  
+  }
+ 
 }
