@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RestUrl } from './config/config';
+import { config } from './config/config';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import { RestUrl } from './config/config';
 export class AuthenticationService {
   private token: string;
   private responseMessage: any;
-  baseUrl = RestUrl;
+  baseUrl = config.RestUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +17,7 @@ export class AuthenticationService {
   }
   signIn(account, typeOfAccount: string) {
     this.http
-      .post<{ token: string }>(this.baseUrl.baseUrl + typeOfAccount, account)
+      .post<{ token: string }>(this.baseUrl + '/'+ typeOfAccount, account)
       .subscribe((response) => {
         const token = response.token;
         this.token = token;

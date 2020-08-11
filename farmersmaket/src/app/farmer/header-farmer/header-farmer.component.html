@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" routerLink="/farmer">
                         <img src="assets/images/logo.png" alt="Logo" class="logo-size">
                     </a> <!-- Logo -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,17 +13,24 @@
                         <span class="bar-icon"></span>
                     </button>
   
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse"  id="navbarNavDropdown">
                         <ul id="nav" class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a data-scroll-nav="0" href="#products">Products</a>
+                            <li class="nav-item active ">
+                                <a data-scroll-nav="0" routerLink="/farmer">Products</a> 
+                            </li>
+                            <li class="nav-item active ">
+                                <a data-scroll-nav="0" routerLink="product/add">Add product</a> 
+                            </li>
+                            <li class="nav-item active ">
+                                <a data-scroll-nav="0" routerLink="product/234234/edit">Update product</a> 
                             </li>
                             <li class="nav-item">
-                                <a data-scroll-nav="0" href="#orders">Orders</a>
+                                <a data-scroll-nav="0" routerLink="#orders">Orders</a>
                             </li>
                         </ul> <!-- navbar nav -->
                     </div>
                 </nav> <!-- navbar -->
+                
             </div>
         </div> <!-- row -->
     </div> <!-- container -->

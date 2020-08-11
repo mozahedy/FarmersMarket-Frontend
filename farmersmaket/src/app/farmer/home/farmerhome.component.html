@@ -1,3 +1,4 @@
+
 <app-farmer-header></app-farmer-header>
      
     <!--====== PRODUCT PART START ======-->
@@ -12,23 +13,17 @@
                                 <div class="row product-items-active">
 
                                     <div class="col-md-3" *ngFor="let product of products">
-                                        <div class="single-product-items">
+                                        <div class="single-product-items mb-20">
                                             <div class="product-item-image">
-                                                <a href="#"><img src="assets/images/product/p-1.jpg" alt="Product"></a>
+                                                <a routerLink="product/{{product._id}}/edit"><img src="{{product.image}}" alt="Product"></a>
                                                 <div class="product-discount-tag">
-                                                    <p>-60%</p>
+                                                    <p>{{product.category}}</p>
                                                 </div>
                                             </div>
-                                            <div class="product-item-content text-center mt-30">
+                                            <div class="product-item-content text-center mt-10">
                                                 <h5 class="product-title"><a href="#">{{product.name}}</a></h5>
-                                                <ul class="rating">
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                </ul>
-                                                <span class="regular-price">${{product.unit_price}}</span>
-                                                <span class="discount-price">$69.00</span>
+                                                <span>In stock: <span class="regular-price">{{product.inventory}}</span></span>
+                                                <span class="d-block">Price: <span class="regular-price">${{product.unit_price}}</span></span>
                                             </div>
                                         </div> <!-- single product items -->
                                     </div>
