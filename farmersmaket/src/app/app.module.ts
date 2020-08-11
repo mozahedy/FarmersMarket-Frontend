@@ -31,16 +31,18 @@ import { UsersGuard } from './users.guard';
       { path: 'home', component: HomepageComponent },      
       { path: 'home/signup', component: SignupComponent },
       {
-        path: 'customers',        
+        path: 'customers',
+        canActivate: [UsersGuard],
         loadChildren: () =>
           import('./customer/customer.module').then((m) => m.CustomerModule),
       },
       {
         path: 'farmers',
+        canActivate: [UsersGuard],
         loadChildren: () =>
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
-      // { path: '**', redirectTo: 'home', pathMatch: 'full' }
+      { path: '**', redirectTo: 'home', pathMatch: 'full' } //redirect to signin page
       
     ]),
   ],

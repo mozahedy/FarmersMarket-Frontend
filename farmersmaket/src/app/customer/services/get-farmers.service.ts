@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GetFarmersService {
- listOfFarmers: any
-
+ listOfFarmers: any;
+ selectedFarmer: any;
   constructor() { }
 
 
