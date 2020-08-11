@@ -19,7 +19,7 @@ import { MakeOrderComponent } from './make-order/make-order.component';
       {path:'farmers',component:CustomerHomeComponent},
       {path:'orders',component:OrderHistoryComponent},
       {path:'shoppingcart',component:ShoppingCartComponent},
-      {path:'farmers/:id',component:MakeOrderComponent},
+      {path:'shopping/buy',component:MakeOrderComponent},
 
     ]),
     ReactiveFormsModule,
