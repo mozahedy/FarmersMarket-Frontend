@@ -43,7 +43,6 @@ import { UsersGuard } from './users.guard';
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
       { path: '**', redirectTo: 'home', pathMatch: 'full' } //redirect to signin page
-      
     ]),
   ],
   providers: [

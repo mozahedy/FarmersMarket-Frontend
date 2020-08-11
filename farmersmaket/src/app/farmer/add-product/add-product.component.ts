@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators  } from '@angular/forms';
 import { AddProductService } from './add-product.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../authentication.service';
 
 @Component({
   selector: 'app-add-product',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddProductComponent implements OnInit {
   img: File;
+  farmerId: any;
   fd = new FormData();
   profileForm = this.fb.group({
     name: ['', Validators.required],
@@ -24,19 +26,20 @@ export class AddProductComponent implements OnInit {
     private fb: FormBuilder,
     private addProductService: AddProductService,
     private cd: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
     ) { }
 
   ngOnInit(): void {
   }
  // Function for handling form when it is submited
   onSubmit(): void {
-    this.result = this.addProductService.uploadProductImage(this.fd)
+    this.farmerId = this.farmerId = this.authenticationService.getUserAccount()._id;
+     this.result = this.addProductService.uploadProductImage(this.fd)
                   .subscribe(res => {
                      if ( res.status === 'ok' ) {
-                      this.profileForm.patchValue({image: res.image});
-                      
-                      this.addProductService.addProduct(this.profileForm.value)
+                      this.profileForm.controls['image'].setValue(res.image);
+                      this.addProductService.addProduct(this.profileForm.value, this.authenticationService.getUserAccount()._id)
                         .subscribe(response => {
                           if ( res.status === 'ok' ){
                             this.router.navigateByUrl('/farmer');
@@ -47,7 +50,7 @@ export class AddProductComponent implements OnInit {
                     } else {
                       alert('Error in adding product image. Please try again.');
                    } 
-                  });
+                  }); 
   }
 
   onFileSelect(event): void {
