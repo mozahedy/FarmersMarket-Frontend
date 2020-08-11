@@ -3,7 +3,40 @@
 
 <section id="contact" class="contact-area pt-115 mt-100">
   <div class="container">
+    <div class="contact-box">
+      <h3>
+        <form>
+          <input
+            type="radio"
+            name="filterStatus"
+            value="Pending"
+            (change)="filterByStatus($event)"
+            checked
+          />
+          Pending
+          <input
+            type="radio"
+            name="filterStatus"
+            value="Ready"
+            (change)="filterByStatus($event)"
+          />
+          Ready
+          <input
+            type="radio"
+            name="filterStatus"
+            value="Complete"
+            (change)="filterByStatus($event)"
+          />
+          Complete
+        </form>
+      </h3>
+     </div>
+              <!-- row -->   
+      <!-- row -->
 
+      
+
+   
     <div class="contact-box mt-70" *ngFor="let order of orderProducts">
       <div class="row">
         <div class="col-lg-4" id="order">
