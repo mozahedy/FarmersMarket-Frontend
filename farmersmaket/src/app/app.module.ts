@@ -40,7 +40,7 @@ import { UsersGuard } from './users.guard';
         loadChildren: () =>
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
-      // { path: '**', redirectTo: 'home', pathMatch: 'full' }
+      { path: '**', redirectTo: 'home', pathMatch: 'full' } //redirect to signin page
       
     ]),
   ],
