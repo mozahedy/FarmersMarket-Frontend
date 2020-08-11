@@ -78,19 +78,6 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-        // const fetchOrders$ = this.ordersDataService.getOrderHistory(this.status, this.custEmail, this.lowerDate, this.upperDate)
-        
-        // fetchOrders$
-        // .subscribe((res: any) => {
-        //   console.log("inside subscribe",res);
-          
-        //   this.orders = res.data;
-        //   for(let order of this.orders){
-        //     order.order_date = new Date(order.order_date).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
-        //   }
-        // })
-       
-
 
   }
 

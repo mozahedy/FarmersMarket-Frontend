@@ -43,14 +43,13 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   onSubmit(){
-    this.ordersDataService.createOrder(this.shoppingCart, this.checkoutForm.value.email)
+    this.ordersDataService.createOrder(this.shoppingCart, this.customer.email)
   }
 
   ngOnInit(): void {
 
     this.shoppingCart = this.makeOrderService.getCurrentCart();
-    this.customer = this.auth.getUserAccount
-
+    this.customer = this.auth.getUserAccount();
     this.checkoutForm.value.fullname = this.customer.name.firstname + ' ' + this.customer.name.lastname;
     this.checkoutForm.value.email = this.customer.email;
     this.checkoutForm.value.street = this.customer.address.street;
