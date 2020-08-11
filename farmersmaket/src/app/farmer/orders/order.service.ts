@@ -24,4 +24,17 @@ export class OrderService {
      return this.http.patch<any>(this.updateApi+orderId,data);
     
   }
+
+  completeOrder(orderId,data) {
+    console.log(data);
+     return this.http.patch<any>(this.updateApi+orderId,data);
+    
+  }
+
+  getFilteredHistory(status: string) {
+    console.log(status)
+    return this.http.get<any>(this.updateApi+status+'/farmers/1');
+
+
+  }
 }

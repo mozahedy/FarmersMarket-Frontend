@@ -4,6 +4,8 @@ import { FarmerHomeComponent } from './home/farmerhome.component';
 import { OrdersComponent } from './orders/orders.component';
 import { HeaderFarmerComponent } from './header-farmer/header-farmer.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [FarmerHomeComponent, OrdersComponent, HeaderFarmerComponent],
@@ -11,6 +13,9 @@ import { RouterModule } from '@angular/router';
    RouterModule.forChild([
      {path:'',component:FarmerHomeComponent},
      {path:'orders',component:OrdersComponent},
-   ])]
+   ]),
+   ReactiveFormsModule,
+   FormsModule
+  ]
 })
 export class FarmerModule {}

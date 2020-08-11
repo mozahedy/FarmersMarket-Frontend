@@ -30,14 +30,12 @@ import { UsersGuard } from './users.guard';
       { path: 'home/signin', component: HomepageComponent },
       { path: 'home/signup', component: SignupComponent },
       {
-        path: 'customers',
-        canActivate: [UsersGuard],
+        path: 'customers',        
         loadChildren: () =>
           import('./customer/customer.module').then((m) => m.CustomerModule),
       },
       {
         path: 'farmers',
-        canActivate: [UsersGuard],
         loadChildren: () =>
           import('./farmer/farmer.module').then((m) => m.FarmerModule),
       },
