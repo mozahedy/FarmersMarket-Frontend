@@ -31,7 +31,6 @@ export class AddProductComponent implements OnInit {
   }
  // Function for handling form when it is submited
   onSubmit(): void {
-    console.log(this.fd);
     this.result = this.addProductService.uploadProductImage(this.fd)
                   .subscribe(res => {
                      if ( res.status === 'ok' ) {
