@@ -30,7 +30,7 @@ export class OrderService {
      return this.http.patch<any>(this.updateApi+orderId,data);
     
   }
-
+ //get filtered ordered list
   getFilteredHistory(status: string) {
     console.log(status)
     return this.http.get<any>(this.updateApi+status+'/farmers/1');
