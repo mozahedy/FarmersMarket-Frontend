@@ -1,101 +1,63 @@
+<app-header-customer></app-header-customer> 
+<section id="home" class="slider-area pt-200">
+    <div class="container-fluid position-relative">
+        <div class="slider-active">
+           
+            <div class="single-slider">
+                    <div class="slider-bg">
+                        <h2>Checkout</h2>
+                        <p>Here's a summary of your orders.</p>
+                        <div class="row">
+                          <div class="col-75">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="tab-content" id="v-pills-tabContent">
+                                            <div class="tab-pane fade show active" id="v-pills-furniture" role="tabpanel" aria-labelledby="v-pills-furniture-tab">
+                                                <div class="product-items mt-30">
+                                                    <div class="row product-items-active">
+                    
+                                                        <div class="col-md-3" *ngFor="let product of products">
+                                                            <div class="single-product-items mb-20">
+                                                                <div class="product-item-image">
+                                                                    <img src="{{product.image}}" alt="Product">
+                                                                    <div class="product-discount-tag">
+                                                                        <p style="cursor: pointer;" (click) = "addToCart(product)">+cart</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-item-content text-center mt-10">
+                                                                    <h5 class="product-title"><p >{{product.name}}</p></h5>
+                                                                    <span>In stock: <span class="regular-price">{{product.inventory}}</span></span>
+                                                                    <span class="d-block">Price: <span class="regular-price">${{product.unit_price}}</span></span>
+                                                                </div>
+                                                            </div> <!-- single product items -->
+                                                        </div>
+                                                    </div> <!-- row -->
+                                                </div> <!-- product items -->
+                                            </div> <!-- tab pane -->
+                                        </div> <!-- tab content --> 
+                                    </div>
+                                </div> <!-- row -->
+                            </div> <!-- container -->
+                          </div>
+                          <div class="col-25">
+                            <div class="container" >
+                              <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{cartItems.length}}</b></span></h4>
+                              <p *ngFor = "let item of cartItems"><span class="plus-minu-btn">-</span> {{item.product.name}}<span class="plus-minu-btn">+</span> <span class="plus-minu-btn price">*</span><span class="price">${{item.product.unit_price}}</span></p>
+                              <hr>
+                              <p>Total <span class="price" style="color:black"><b>In development*</b></span></p>
+                              <div ><button 
+                                class="btn-checkout"
+                                [routerLink] = "['/customers/shoppingcart']">Checkout</button></div>
+                            </div>
+                          </div>
+                        </div>
+                        
 
-  <app-header-customer></app-header-customer>
-  <section id="contact" class="contact-area pt-200">
-    <div class="container">
-      <!-- row -->
-  
-  
-  
-  </div>
-  <!-- container -->
-  </section>
-  
-  <section id="contact" class="contact-area pt-25 ">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="contact-title text-center">
-            <h2 class="info-title" *ngIf="">Message</h2>
-            <ng-template #no_orders><h2 class="info-content">No Farmers</h2></ng-template>
-            <h2 class="info-content" >Please Add the products you want to purchase</h2>
-          </div> <!-- contact title -->
-        </div>
-      </div> <!-- row -->
-  
-      <div class="contact-box mt-70" >
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="contact-info pt-25">
-              <h4 class="info-title">Farmer Name</h4>
-              <h6 class="info-content">Order.id</h6>
-              <ul>
-                <li>
-                  <div class="single-info mt-30">
-                    <div class="info-title">
-                      Order Date:
-                    </div><br />
-                    <div class="info-content">
-                      <p>my orders</p>
-                    </div>
-                  </div> <!-- single info -->
-                </li>
-                <li>
-                  <div class="single-info mt-30">
-                    <div class="info-title">
-                      Farmer Id:
-                    </div><br />
-                    <div class="info-content">
-                      this is farmer id
-                    </div>
-                  </div> <!-- single info -->
-                </li>
-                <li>
-                  <div class="single-info mt-30">
-                    <div class="info-title">
-                      Total Price:
-                    </div><br />
-                    <div class="info-content">
-                      <p>this is total price</p>
-                    </div>
-                  </div> <!-- single info -->
-                </li>
-              </ul>
-            </div> <!-- contact info -->
-          </div>
-          <div class="col-lg-8">
-            <div class="contact-form">
-              <div class="single-slider">
-                <div class="slider-bg">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Unit</th>
-                        <th scope="col">Unit Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr >
-                        <th scope="row">row</th>
-                        <td>product name</td>
-                        <td>product unit</td>
-                        <td>product unitprice</td>
-                        <td>product quantity</td>
-                      </tr>
-        
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-  
-            </div> <!-- row -->
-          </div>
-        </div> <!-- row -->
-      </div>
-  
-  
-  
-    </div> <!-- container -->
-  </section>
+                    </div> <!-- container -->
+            </div> <!-- single slider -->
+        </div> <!-- slider active -->
+
+    </div> <!-- container fluid -->
+</section>
+
