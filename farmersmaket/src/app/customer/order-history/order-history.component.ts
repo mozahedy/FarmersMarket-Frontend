@@ -29,6 +29,8 @@ export class OrderHistoryComponent implements OnInit {
   initial: boolean = true;
   fetchOrders$: any;
 
+  fetchOrdersSubscription: Subscription;
+
   ordersQueryForm: FormGroup;
 
   constructor(private ordersDataService: OrdersDataService, private activatedRoute: ActivatedRoute,private formBuilder: FormBuilder, private auth: AuthenticationService ) {
@@ -82,7 +84,7 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    
+    this.fetchOrdersSubscription.unsubscribe();
   }
 
 }

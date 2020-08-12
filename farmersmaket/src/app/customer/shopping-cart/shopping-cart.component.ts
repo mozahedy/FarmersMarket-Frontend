@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersDataService } from '../services/orders-data.service'
-import {AuthenticationService} from '../../authentication.service'
+import { AuthenticationService } from '../../authentication.service'
 import {
   FormGroup,
   FormControl,
@@ -8,7 +8,8 @@ import {
   FormBuilder,
   FormArray
 } from "@angular/forms";
-import {MakeOrderService} from '../services/make-order.service'
+import { MakeOrderService } from '../services/make-order.service'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -19,31 +20,33 @@ export class ShoppingCartComponent implements OnInit {
 
   shoppingCart: any;
   customer: any;
-  totalPrice:any;
-
+  totalPrice: any;
   checkoutForm: FormGroup;
+  createOrderSubscription: Subscription;
 
-  constructor(private ordersDataService: OrdersDataService, private makeOrderService: MakeOrderService, private formBuilder: FormBuilder, private auth: AuthenticationService) { 
+  constructor(private ordersDataService: OrdersDataService, private makeOrderService: MakeOrderService, private formBuilder: FormBuilder, private auth: AuthenticationService) {
 
     this.checkoutForm = formBuilder.group(
       {
-        'fullname':[],
+        'fullname': [],
         'email': [],
-        'street':[],
-        'city':[],
-        'state':[],
-        'zip':[],
-        'cardname':[],
-        'cardnumber':[],
-        'expmonth':[],
-        'expyear':[],
-        'cvv':[]
+        'street': [],
+        'city': [],
+        'state': [],
+        'zip': [],
+        'cardname': [],
+        'cardnumber': [],
+        'expmonth': [],
+        'expyear': [],
+        'cvv': []
       }
     )
   }
 
-  onSubmit(){
-    this.ordersDataService.createOrder(this.shoppingCart, this.customer.email)
+  onSubmit() {
+    this.createOrderSubscription = this.ordersDataService.createOrder(this.shoppingCart, this.customer.email).subscribe((res: any) => {
+
+    })
   }
 
   ngOnInit(): void {
@@ -58,11 +61,15 @@ export class ShoppingCartComponent implements OnInit {
     this.checkoutForm.value.zip = this.customer.address.zip;
 
     this.totalPrice = 0;
-    
-    for(let item of this.shoppingCart.items){
+
+    for (let item of this.shoppingCart.items) {
 
       this.totalPrice = this.totalPrice + (item.product.unit_price * item.quantity);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.createOrderSubscription.unsubscribe();
   }
 
 }
