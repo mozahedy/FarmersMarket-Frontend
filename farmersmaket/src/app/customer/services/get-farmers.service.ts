@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { config } from '../../config/config';
 import { HttpClient } from '@angular/common/http'
+import { Subscription } from 'rxjs';
 
 
 @Injectable({
@@ -11,6 +12,8 @@ export class GetFarmersService {
 
   farmersList: any;
   farmerId: any;
+
+  fetchFarmersSubscription: Subscription;
 
   constructor(public http: HttpClient) { }
 
@@ -25,12 +28,16 @@ export class GetFarmersService {
   fetchFarmers() {
     const fetchFarmers$ = this.http.get(config.RestUrl + `/farmers/`);
 
-    fetchFarmers$.subscribe((res: any) => { 
+    this.fetchFarmersSubscription = fetchFarmers$.subscribe((res: any) => { 
       this.farmersList = res.data;
     })
 
     return fetchFarmers$
 
+  }
+
+  ngOnDestroy(): void {
+    this.fetchFarmersSubscription.unsubscribe();
   }
 }
 
