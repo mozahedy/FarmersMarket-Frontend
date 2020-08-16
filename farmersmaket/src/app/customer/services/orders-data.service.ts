@@ -30,8 +30,8 @@ export class OrdersDataService {
     let items: any[] = shoppingCart.items;
 
     newOrder.customer_email = custEmail;
-    newOrder.farmer_id = shoppingCart.farmerId;
-    newOrder.total = 0;
+    newOrder.farmer_id = shoppingCart.farmer_id;
+    newOrder.total_price = 0;
     newOrder.products = [];
 
     for (let item of items) {
@@ -39,9 +39,9 @@ export class OrdersDataService {
       product = item.product;
       product.quantity = item.quantity;
       newOrder.products.push(product)
-      newOrder.total = newOrder.total + (product.unit_price * product.quantity);
+      newOrder.total_price = newOrder.total_price + (product.unit_price * product.quantity);
     }
- 
+
     return this.http.post(config.RestUrl + `/orders/`, newOrder)
 
   }
