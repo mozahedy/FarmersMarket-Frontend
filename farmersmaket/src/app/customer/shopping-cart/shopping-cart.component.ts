@@ -10,6 +10,7 @@ import {
 } from "@angular/forms";
 import { MakeOrderService } from '../services/make-order.service'
 import { Subscription } from 'rxjs';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-shopping-cart',
@@ -24,16 +25,32 @@ export class ShoppingCartComponent implements OnInit {
   checkoutForm: FormGroup;
   createOrderSubscription: Subscription;
 
-  constructor(private ordersDataService: OrdersDataService, private makeOrderService: MakeOrderService, private formBuilder: FormBuilder, private auth: AuthenticationService) {
+  constructor(private router: Router, private ordersDataService: OrdersDataService, private makeOrderService: MakeOrderService, private formBuilder: FormBuilder, private auth: AuthenticationService) {
+
+    this.shoppingCart = this.makeOrderService.getCurrentCart();
+    this.customer = this.auth.getUserAccount();
+    let fullname = this.customer.name.firstname + ' ' + this.customer.name.lastname;
+    let email = this.customer.email;
+    let street = this.customer.address.street;
+    let city = this.customer.address.city;
+    let state = this.customer.address.state;
+    let zip = this.customer.address.zip;
+
+    this.totalPrice = 0;
+
+    for (let item of this.shoppingCart.items) {
+
+      this.totalPrice = this.totalPrice + (item.product.unit_price * item.quantity);
+    }
 
     this.checkoutForm = formBuilder.group(
       {
-        'fullname': [],
-        'email': [],
-        'street': [],
-        'city': [],
-        'state': [],
-        'zip': [],
+        'fullname': [fullname],
+        'email': [email],
+        'street': [street],
+        'city': [city],
+        'state': [state],
+        'zip': [zip],
         'cardname': [],
         'cardnumber': [],
         'expmonth': [],
@@ -44,28 +61,15 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   onSubmit() {
+    
     this.createOrderSubscription = this.ordersDataService.createOrder(this.shoppingCart, this.customer.email).subscribe((res: any) => {
-
+      this.router.navigate(['customers'])
     })
   }
 
   ngOnInit(): void {
 
-    this.shoppingCart = this.makeOrderService.getCurrentCart();
-    this.customer = this.auth.getUserAccount();
-    this.checkoutForm.value.fullname = this.customer.name.firstname + ' ' + this.customer.name.lastname;
-    this.checkoutForm.value.email = this.customer.email;
-    this.checkoutForm.value.street = this.customer.address.street;
-    this.checkoutForm.value.city = this.customer.address.city;
-    this.checkoutForm.value.state = this.customer.address.state;
-    this.checkoutForm.value.zip = this.customer.address.zip;
-
-    this.totalPrice = 0;
-
-    for (let item of this.shoppingCart.items) {
-
-      this.totalPrice = this.totalPrice + (item.product.unit_price * item.quantity);
-    }
+    
   }
 
   ngOnDestroy(): void {
